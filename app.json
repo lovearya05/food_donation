@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "food_donation",
+    "slug": "food_donation",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "food_donation"
+}
