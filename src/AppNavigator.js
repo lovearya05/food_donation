@@ -2,7 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 import Login from './screens/Login'
-// import BottomNavigator from './bottom/BottomNavigator'
+import BottomNavigator from './bottom/BottomNavigator'
 import Profile from './screens/Profile'
 import Singup from './screens/Signup'
 // import UserState from './UserState'
@@ -14,11 +14,11 @@ const AppNavigator = () => {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
 
-                {/* <Stack.Screen
+                <Stack.Screen
                     name='BottomNavigator'
                     component={BottomNavigator}
                     options={{ HeaderShown: false , headerTitle: false }}
-                /> */}
+                />
                 
                 <Stack.Screen
                     name='Login'
