@@ -18,13 +18,13 @@ const Signup = ({ navigation }) => {
 
         <View style={{ flex: 1, backgroundColor: "black" }}>
             <Text style={{ 
-                 marginTop: 100,
+                 marginTop: 30,
                  paddingLeft:30,
-                  fontSize: 70, 
-                  fontWeight: '700',
+                  fontSize: 65, 
+                  fontWeight: '600',
                    color: 'red'
                     }}>
-                Create Account
+                Create Account!
             </Text>
 
 
@@ -42,7 +42,7 @@ const Signup = ({ navigation }) => {
                     borderRadius: 10,
                     borderWidth: 0.5,
                     alignSelf: 'center',
-                    marginTop: 30,
+                    marginTop: 20,
                     backgroundColor: "white",
                 }}
             />

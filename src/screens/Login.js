@@ -89,7 +89,7 @@ const Login = ({ navigation }) => {
 
             <TouchableOpacity
                 onPress={()=>{
-                    // navigation.navigate('Signup')
+                    navigation.navigate('Signup')
                 }}
                 
                 style={{

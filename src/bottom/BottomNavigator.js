@@ -5,7 +5,8 @@ import Volunteer from '../screens/Volunteer';
 import Donor from '../screens/Donor'
 import Profile from '../screens/Profile';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-// import Login from '../screens/Login';
+import Login from '../screens/Login';
+import Signup from '../screens/Signup';
 
 const Bottom = createBottomTabNavigator();
 
@@ -14,6 +15,24 @@ const BottomNavigator = () => {
 
     return (
         <Bottom.Navigator>
+
+            <Bottom.Screen 
+                name= 'Login'
+                component={Login}
+                options={{
+                    headerShown:true,
+
+                }}
+            />
+
+            <Bottom.Screen 
+                name= 'Signup'
+                component={Signup}
+                options={{
+                    headerShown:true,
+
+                }}
+            />
 
             <Bottom.Screen 
                 name= 'volunter'
