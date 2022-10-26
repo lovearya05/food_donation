@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
-// import firestore from '@react-native-firebase/firestore'
+import firebase from '../firebase/config'
 
 const Login = ({ navigation }) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
 
 
-    // const saveData = ()=>{
-    //     firestore()
-    //     .collection()
-    //     .add({
-    //         email: email,
-    //         password: password,
-    //     })
-    //     .then(()=>{
-    //         console.log("user Added")
-    //     })
-    // }
+    loginUser = async (email, password) =>{
+        try{
+            await firebase.auth().signInWithEmailAndPassword(email,password)
+            // .then(res)
+            // console.log("loged in")
+
+        } catch(error){
+            console.log(error.message)
+        }
+    }
 
     return (
 
@@ -76,6 +75,7 @@ const Login = ({ navigation }) => {
                 }}
                 onPress={() => {
                     // saveData()
+                    loginUser(email, password)
                 }}
             >
 

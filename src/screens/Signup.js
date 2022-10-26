@@ -1,16 +1,23 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { View, Text,TextInput, TouchableOpacity } from 'react-native'
-
+import {firebase} from '../firebase/config'
 
 const Signup = ({ navigation }) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
     const [name, setname] = useState('')
 
-        const saveData = (name, email, password)=>{
-            console.log(name)
-            console.log(email)
-            console.log(password)
+        const saveData = async (name, email, password)=>{
+            // console.log(name)
+            // console.log(email)
+            // console.log(password)
+
+            await firebase.auth().createUserWithEmailAndPassword(email,password)
+            .then(()=>{
+                console.log("user created")
+            })
+
+
         }
 
 
@@ -97,7 +104,7 @@ const Signup = ({ navigation }) => {
                 }}
                 
                 // onPress={() => register(email, password,name)}
-                // onPress={() => { saveData(name, email,password) }}
+                onPress={() => { saveData(name, email,password) }}
             >
 
                 <Text

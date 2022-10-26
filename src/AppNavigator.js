@@ -20,11 +20,11 @@ const AppNavigator = () => {
                     options={{ HeaderShown: false , headerTitle: false }}
                 />
                 
-                <Stack.Screen
+                {/* <Stack.Screen
                     name='Login'
                     component={Login}
                     options={{ HeaderShown: false , headerTitle: false }}
-                />
+                /> */}
 
                 <Stack.Screen
                     name='Profile'
@@ -38,11 +38,6 @@ const AppNavigator = () => {
                     options={{ HeaderShown: false , headerTitle: false }}
                 />
 
-                {/* <Stack.Screen
-                    name='UserState'
-                    component={UserState}
-                    options={{ HeaderShown: false , headerTitle: false }}
-                />  */}
 
             </Stack.Navigator>
         </NavigationContainer>

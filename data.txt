@@ -4,3 +4,35 @@
     //   "resizeMode": "contain",
     //   "backgroundColor": "#ffffff"
     // }
+
+
+
+
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+
+                <Stack.Screen
+                    name='BottomNavigator'
+                    component={BottomNavigator}
+                    options={{ HeaderShown: false , headerTitle: false }}
+                />
+                
+                
+                <Stack.Screen
+                    name='Profile'
+                    component={Profile}
+                    options={{ HeaderShown: false , headerTitle: false }}
+                />
+
+                <Stack.Screen
+                    name='Signup'
+                    component={Singup}
+                    options={{ HeaderShown: false , headerTitle: false }}
+                />
+
+                {/* <Stack.Screen
+                    name='UserState'
+                    component={UserState}
+                    options={{ HeaderShown: false , headerTitle: false }}
+                />  */}
+
+            </Stack.Navigator>
