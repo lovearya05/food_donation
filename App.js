@@ -22,10 +22,10 @@ const AuthenticatedUserProvider = ({children}) =>{
       </AuthenticatedUserContext.Provider>
   )
 }
-
+//screenOptions={{headerShown: false}}
 function MainStack() {
   return (
-    <Stack.Navigator defaultScreenOptions={Chat} screenOptions={{headerShown: false}}>
+    <Stack.Navigator defaultScreenOptions={Chat} >  
       <Stack.Screen name = "Chat" component = {Chat}/>
       <Stack.Screen name = "Donor" component = {Donor}/>
       
