@@ -16,7 +16,7 @@ const BottomNavigator = () => {
     return (
         <Bottom.Navigator>
 
-            {/* <Bottom.Screen 
+            { <Bottom.Screen 
                 name= 'Login'
                 component={Login}
                 options={{
@@ -24,7 +24,7 @@ const BottomNavigator = () => {
 
                 }}
             />
-
+/*
             <Bottom.Screen 
                 name= 'Signup'
                 component={Signup}

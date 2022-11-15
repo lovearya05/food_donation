@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { View, Text,TextInput, TouchableOpacity } from 'react-native'
+import { View, Text,TextInput, TouchableOpacity, Alert } from 'react-native'
 import {firebase} from '../firebase/config'
 
 const Signup = ({ navigation }) => {
@@ -16,6 +16,7 @@ const Signup = ({ navigation }) => {
             .then(()=>{
                 console.log("user created")
             })
+            .catch((err) => Alert.alert("Login error",err.message));
 
 
         }
