@@ -9,6 +9,7 @@ import Chat from "./src/screens/Chat"
 import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
 import Donor from './src/screens/Donor';
+import Volunteer from './src/screens/Volunteer'
 import { auth } from './src/firebase/config';
 
 const Stack = createStackNavigator();
@@ -25,8 +26,9 @@ const AuthenticatedUserProvider = ({children}) =>{
 //screenOptions={{headerShown: false}}
 function MainStack() {
   return (
-    <Stack.Navigator defaultScreenOptions={Chat} >  
-      <Stack.Screen name = "Chat" component = {Chat}/>
+    <Stack.Navigator >  
+      {/* <Stack.Screen name = "Chat" component = {Chat}/> */}
+      {/* <Stack.Screen name = "Volunteer" component = {Volunteer}/> */}
       <Stack.Screen name = "Donor" component = {Donor}/>
       
     </Stack.Navigator>
