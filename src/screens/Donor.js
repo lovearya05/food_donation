@@ -140,12 +140,12 @@ const uploadImage = async ()=>{
 
     const showDatepicker = () => {
         showMode('date');
-        console.log("Change Date Pressed!")
+        // console.log("Change Date Pressed!")
     };
 
     const showTimepicker = () => {
         showMode('time');
-        console.log("Change Time Pressed!")
+        // console.log("Change Time Pressed!")
     };
 
       
@@ -205,8 +205,12 @@ const uploadImage = async ()=>{
 
     <ScrollView style={styles.scrollView}>
       <View style={{
+      borderTopLeftRadius:10,
+      borderTopRightRadius:10,
       flex: 1,
-      backgroundColor: 'black',}}>
+      backgroundColor: '#350A0A'
+      
+      }}>
         <View style={styles.mainCont}>
 
       <Text style={theme.headerText}>Donate Food ♨ </Text>
@@ -241,7 +245,15 @@ const uploadImage = async ()=>{
         {/* <ImgPicker/> */}
 
       </View>
-      <Button style={styles.goButton} title="Go!" onPress={uploadData} /> 
+
+      <TouchableOpacity
+              style={styles.uploadOpacity}
+              onPress={uploadData}
+            >
+              <Text style={styles.uploadBtn}> Upload Food </Text>
+      </TouchableOpacity>
+
+      {/* <Button style={styles.goButton} title="Go!" onPress={uploadData} />  */}
 
     </View>      
   </View>
@@ -255,13 +267,29 @@ const uploadImage = async ()=>{
   export default Donor
   
   const styles = StyleSheet.create({
-    goButton:{
+    uploadBtn:{
+      marginLeft:38,
+      marginTop:11,
+      color:'white',
+    },
+    uploadOpacity:{
+      marginTop:45,
+      borderColor:'green',
+      borderWidth: 2,
+      borderRadius:10,
+      width:170,
+      height:50,
+      marginLeft:'28%'
+    },
+    uploadButton:{
       marginTop:10,
       color:'red',
-      backgroundColor:'red'
+      // backgroundColor:'red'
     },
     scrollView: {
-      backgroundColor: 'black',
+      backgroundColor: '#350A0A',
+      marginTop:20,
+      
     },
     timePicker:{ 
       display: "flex",

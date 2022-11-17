@@ -1,16 +1,15 @@
 import React, {createContext, useEffect,useState , useContext  } from 'react';
-// import AppNavigator from './src/AppNavigator';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {View, ActivityIndicator} from "react-native"
 import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './src/firebase/config';
 
-import Chat from "./src/screens/Chat"
+
 import Login from './src/screens/Login';
 import Signup from './src/screens/Signup';
-import Donor from './src/screens/Donor';
-import Volunteer from './src/screens/Volunteer'
-import { auth } from './src/firebase/config';
+import Chat from './src/screens/Chat';
+import BottomNavigator from './src/bottom/BottomNavigator';
 
 const Stack = createStackNavigator();
 const AuthenticatedUserContext = createContext({});
@@ -26,12 +25,33 @@ const AuthenticatedUserProvider = ({children}) =>{
 //screenOptions={{headerShown: false}}
 function MainStack() {
   return (
-    <Stack.Navigator screenOptions={{headerShown: true}} >  
-      {/* <Stack.Screen name = "Chat" component = {Chat}/> */}
-      {/* <Stack.Screen name = "Volunteer" component = {Volunteer}/> */}
-      <Stack.Screen name = "Donor" component = {Donor}/>
+
+    <Stack.Navigator screenOptions={{
+      headerShown: false
+    }}>  
+      <Stack.Screen
+          name='BottomNavigator'
+          component={BottomNavigator}
+          options={{ HeaderShown: false , headerTitle: false }}
+      />
+
+      
+      <Stack.Screen 
+          name= 'Chat'
+          component={Chat}
+          options={{
+              headerShown:false,
+              // tabBarIcon:({color,size})=(
+              //     <Image source={require('../../assets/home.png')}
+              //     style={{width:24,height:24,tintColor:color}}/>
+              // ),
+          }}
+      />
+
+      {/* <Stack.Screen name = "Donor" component = {Donor}/> */}
       
     </Stack.Navigator>
+
   )
 }
 
@@ -71,13 +91,14 @@ function RootNavigator(){
   return (
     <NavigationContainer>
       {user ? <MainStack/> : <AuthStack/>}
-    {/* <AuthStack/> */}
+    {/* <AppNavigator/> */}
     </NavigationContainer>
   )
 }
 
 const App = () => {
    return (
+
     <AuthenticatedUserProvider>
       <RootNavigator/>
     </AuthenticatedUserProvider>  

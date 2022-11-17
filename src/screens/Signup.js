@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { View, Text,TextInput, TouchableOpacity, Alert } from 'react-native'
-import {firebase} from '../firebase/config'
+import { ScrollView } from 'react-native-gesture-handler'
+import {auth, firebase} from '../firebase/config'
 
 const Signup = ({ navigation }) => {
     const [email, setemail] = useState('')
@@ -8,21 +9,26 @@ const Signup = ({ navigation }) => {
     const [name, setname] = useState('')
 
         const saveData = async (name, email, password)=>{
-            // console.log(name)
-            // console.log(email)
-            // console.log(password)
 
             await firebase.auth().createUserWithEmailAndPassword(email,password)
-            .then(()=>{
-                console.log("user created")
+            .then(async(auth)=>{
+                    auth.user
+                    .updateProfile({
+                      displayName:name,
+                    })
             })
             .catch((err) => Alert.alert("Login error",err.message));
-
-
         }
-
+        // useEffect(() =>{})
 
     return (
+
+        <ScrollView style={{
+            backgroundColor: 'black',
+            marginTop:20,
+        }}>
+
+        
 
         <View style={{ flex: 1, backgroundColor: "black" }}>
             <Text style={{ 
@@ -105,7 +111,15 @@ const Signup = ({ navigation }) => {
                 }}
                 
                 // onPress={() => register(email, password,name)}
-                onPress={() => { saveData(name, email,password) }}
+                onPress={() => { 
+                    if(name==='' || email===''){
+                        alert("Please Enter Name and Email")
+                    }else if(password.length<6){
+                        alert("Password Should atleast 6 Character Long")
+                    }else{
+                        saveData(name, email,password) 
+                    }
+                    }}
             >
 
                 <Text
@@ -138,6 +152,8 @@ const Signup = ({ navigation }) => {
             </TouchableOpacity>
 
         </View>
+
+        </ScrollView>
     )
 }
 

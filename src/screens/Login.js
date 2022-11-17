@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, TouchableOpacity, Alert, ScrollView } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
-import firebase from '../firebase/config'
+// import firebase from '../firebase/config'
+import { auth, database } from "../firebase/config";
 
 
 const Login = ({ navigation }) => {
     const [email, setemail] = useState('')
     const [password, setpassword] = useState('')
 
-
-    loginUser = async (email, password) =>{
+    const loginUser = async (email, password) =>{
 
         if(email!=="" && password != ""){
             console.log(email, password);
-
-            await firebase.auth().signInWithEmailAndPassword(email, password)
+            await auth.signInWithEmailAndPassword(email, password)
             .then((userCredential)=> console.log("Login Success", userCredential))
             .catch((err) => Alert.alert("Login error", err.message));
             console.log("loged in")
@@ -23,6 +22,12 @@ const Login = ({ navigation }) => {
     }
 
     return (
+
+        <ScrollView style={{
+            backgroundColor: 'black',
+            marginTop:20,
+        }}>
+
 
         <View style={{ flex: 1, backgroundColor: "black" }}>
             <Text style={{ alignSelf: 'center', marginTop: 100, fontSize: 80, fontWeight: '700', color: 'red' }}>
@@ -77,8 +82,11 @@ const Login = ({ navigation }) => {
                     alignSelf: 'center',
                 }}
                 onPress={() => {
-                    // saveData()
+                    if(email=='' || password==''){
+                        alert("please Enter Email or Password");
+                    }else{
                     loginUser(email, password)
+                    }
                 }}
             >
 
@@ -112,6 +120,8 @@ const Login = ({ navigation }) => {
             </TouchableOpacity>
 
         </View>
+
+        </ScrollView>
     )
 }
 
