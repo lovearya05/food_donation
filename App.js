@@ -26,7 +26,7 @@ const AuthenticatedUserProvider = ({children}) =>{
 //screenOptions={{headerShown: false}}
 function MainStack() {
   return (
-    <Stack.Navigator >  
+    <Stack.Navigator screenOptions={{headerShown: true}} >  
       {/* <Stack.Screen name = "Chat" component = {Chat}/> */}
       {/* <Stack.Screen name = "Volunteer" component = {Volunteer}/> */}
       <Stack.Screen name = "Donor" component = {Donor}/>
