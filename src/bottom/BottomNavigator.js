@@ -4,8 +4,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Volunteer from '../screens/Volunteer';
 import Donor from '../screens/Donor'
 import Profile from '../screens/Profile';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import Chat from '../screens/Chat';
+
 
 const Bottom = createBottomTabNavigator();
 
@@ -13,17 +15,28 @@ const Bottom = createBottomTabNavigator();
 const BottomNavigator = () => {
 
     return (
-        <Bottom.Navigator style = {{backgroundColor: 'black'}} screenOptions={{headerTitle: false
-          }} >
+        <Bottom.Navigator 
+            tabBarOptions={{
+            activeTintColor: 'green',
+            inactiveTintColor: 'white',
+            activeBackgroundColor: 'black',
+            inactiveBackgroundColor: '#350A0A',
+            style: {
+                    backgroundColor: '#CE4418',
+                    paddingBottom: 3
+            }
+            }}
+            // style = {{backgroundColor: 'black'}} 
+            screenOptions={{headerTitle: false}} >
+            
             <Bottom.Screen 
                 name= 'volunter'
                 component={Volunteer}
                 options={{
                     headerShown:false,
-                    // tabBarIcon:({color,size})=(
-                    //     <Image source={require('../../assets/home.png')}
-                    //     style={{width:24,height:24,tintColor:color}}/>
-                    // ),
+                    tabBarIcon: () => (
+                    <MaterialCommunityIcons name="home" color={'green'} size={26} />
+                ),
                 }}
             />
 
@@ -32,10 +45,9 @@ const BottomNavigator = () => {
                 component={Donor}
                 options={{
                     headerShown:false,
-                    // tabBarIcon:({color,size})=(
-                    //     <Image source={require('../../assets/home.png')}
-                    //     style={{width:24,height:24,tintColor:color}}/>
-                    // ),
+                    tabBarIcon: () => (
+                    <MaterialCommunityIcons name="plus-circle" color={'green'} size={26} />
+                ),
                 }}
             />
             
@@ -45,10 +57,9 @@ const BottomNavigator = () => {
                 component={Profile}
                 options={{
                     headerShown:false,
-                    // tabBarIcon:({color,size})=(
-                    //     <Image source={require('../../assets/home.png')}
-                    //     style={{width:24,height:24,tintColor:color}}/>
-                    // ),
+                    tabBarIcon: () => (
+                    <MaterialCommunityIcons name="account" color={'green'} size={26} />
+                ),
                 }}
             />
 

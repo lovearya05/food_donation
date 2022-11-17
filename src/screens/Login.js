@@ -12,12 +12,9 @@ const Login = ({ navigation }) => {
     const loginUser = async (email, password) =>{
 
         if(email!=="" && password != ""){
-            console.log(email, password);
             await auth.signInWithEmailAndPassword(email, password)
-            .then((userCredential)=> console.log("Login Success", userCredential))
+            .then((userCredential)=> console.log("Login Success"))
             .catch((err) => Alert.alert("Login error", err.message));
-            console.log("loged in")
-
         }
     }
 

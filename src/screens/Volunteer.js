@@ -3,6 +3,8 @@ import { View, Text,ScrollView, Image,TouchableOpacity, StyleSheet } from 'react
 import firebase from 'firebase/compat'
 
 import {auth} from "../firebase/config"
+// import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 
 const Volunteer = ({navigation}) => {
 
@@ -35,7 +37,8 @@ const [foods,setFoods] = useState([]);
 const ShowData = ({name,address, food, date,time}) =>{
   // console.log(date.toDateString());
   // var myDate = new Date(date*1000);
-  // console.log(date);
+  // console.log(name);
+
   return(
     <View>
       <View style={{alignItems:'center'}}>
@@ -44,16 +47,16 @@ const ShowData = ({name,address, food, date,time}) =>{
       </View>
 
       <View style={styles.bottomComp}>
+          <Text style={styles.donorName} >{name} 😍</Text>
           <Text style={styles.foodName}>{food}</Text>
-
           <Text style={styles.address}>
             Address : {address}
           </Text>
-
+          
           <Text style={styles.avalTill}>
             Available Till
           </Text>
-
+        {/* <AddCircleIcon/> */}
           <Text style={styles.dateTime}>
             Date : {date}
           </Text>
@@ -84,7 +87,7 @@ const ShowData = ({name,address, food, date,time}) =>{
 
         <ScrollView>
             {foods.map(({data}) =>{
-              console.log(data.date.toDate().getDate())
+              {/* console.log(data.date.toDate().getDate()) */}
               var date = data.date.toDate().getDate();
               var month = data.date.toDate().getMonth() + 1;
               var year = data.date.toDate().getFullYear();
@@ -109,7 +112,7 @@ const ShowData = ({name,address, food, date,time}) =>{
 
               var cmpDate = date + '-' + month + '-' + year
               {/* var time = hours + " "+min */}
-              console.log(cmpDate)
+              {/* console.log(cmpDate) */}
               return (
                   <View>
                     <ShowData name={data.name} address={data.address} food={data.food} date={cmpDate} time={time}/>
@@ -138,8 +141,14 @@ const styles = StyleSheet.create({
     backgroundColor:'transparent',
     resizeMode:'cover',
   },
+  donorName:{
+    fontSize:20,
+    marginLeft:15,
+    marginTop:5,
+    color:'green'
+  },
   foodName:{
-    marginTop:10,
+    marginTop:0,
     marginLeft:15,
     fontWeight:"bold",
     color:'white',
@@ -175,7 +184,7 @@ const styles = StyleSheet.create({
     width:90,
     height:30,
     marginLeft:'38%',
-    marginTop:25,
+    marginTop:20,
     marginBottom:50
   },
   pageContent:{

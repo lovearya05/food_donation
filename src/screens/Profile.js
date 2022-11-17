@@ -1,8 +1,9 @@
 import React from "react";
 // import { signOut } from "firebase/auth";
 import { auth, database } from "../firebase/config";
-import { TouchableOpacity, Text } from "react-native";
+import { TouchableOpacity,View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
 
 const Profile = () =>{
 
@@ -18,9 +19,27 @@ const Profile = () =>{
   }
 
   return(
+
+    <View>
+        <Text style={{
+          color:'black',
+          fontSize:100,
+          marginLeft:20,
+          marginTop:40
+          }
+        }>Hii!</Text>
+        <Text style={{
+          color:'green',
+          fontSize:50,
+          marginLeft:70,
+          marginTop:20
+          }
+        }>{auth.currentUser.displayName}</Text>
+
+        
       <TouchableOpacity
       style={{
-        marginTop:500,
+        marginTop:200,
         borderColor:'green',
         borderWidth: 2,
         borderRadius:10,
@@ -38,6 +57,7 @@ const Profile = () =>{
         // borderColor:'green'
       }}> Sign Out </Text>
   </TouchableOpacity>
+    </View>
   )
 }
 

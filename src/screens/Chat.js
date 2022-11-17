@@ -25,8 +25,8 @@ export default function Chat(){
     const [messages, setMessages] = useState([]);
     const navigation = useNavigation();
 
-    const onSignOut = ()=>{
-        signOut(auth).catch(error => console.log(error));
+    const onSignOut = async ()=>{
+        signOut(auth).catch(error => alert(error));
     }
 
     useLayoutEffect(()=>{
@@ -54,7 +54,6 @@ export default function Chat(){
         const q = query(collectionRef, orderBy('createdAt', 'desc'))
 
         const unsubscribe = onSnapshot(q, snapshot=>{
-            console.log('snapshot')
             setMessages(
                 snapshot.docs.map(doc=>({
                     _id: doc.id,
