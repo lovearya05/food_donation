@@ -76,6 +76,9 @@ const ShowData = ({name,address, food, date,time}) =>{
   )
 }
     
+
+
+
   return (
     <View style={styles.pageContent}>
     <Text style={styles.topHeading} >
@@ -86,8 +89,13 @@ const ShowData = ({name,address, food, date,time}) =>{
             <Text style={styles.foodAval}>Foods Avaliable </Text>
 
         <ScrollView>
+
+        {/* console.log(new Date()) */}
             {foods.map(({data}) =>{
-              {/* console.log(data.date.toDate().getDate()) */}
+
+              if(data.date.toDate().getTime() > new Date().getTime()){
+                            
+              {/* console.log(data.date.toDate()) */}
               var date = data.date.toDate().getDate();
               var month = data.date.toDate().getMonth() + 1;
               var year = data.date.toDate().getFullYear();
@@ -118,7 +126,10 @@ const ShowData = ({name,address, food, date,time}) =>{
                     <ShowData name={data.name} address={data.address} food={data.food} date={cmpDate} time={time}/>
                   </View>
               )
-            })}
+
+              }
+            }
+            )}
         </ScrollView>
 
     </View>
