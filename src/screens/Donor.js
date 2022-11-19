@@ -28,13 +28,12 @@ const Donor = ({navigation}) => {
   // upload data to firebase
   const uploadData = () =>{
     const user = firebase.auth().currentUser;
-    // console.log(user.email)
     firebase.firestore().collection('posts').add({
-      
       name: user.displayName,
       address: address,
       food: food,
-      date: date
+      date: date,
+      email:user.email
   }).then(()=>{
     setFood("")
     alert("ThankYou! Your Food is Added")    
@@ -289,7 +288,9 @@ const uploadImage = async ()=>{
     scrollView: {
       backgroundColor: '#350A0A',
       marginTop:20,
-      
+      borderTopLeftRadius: 10,
+      borderTopRightRadius: 10,
+
     },
     timePicker:{ 
       display: "flex",

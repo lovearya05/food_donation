@@ -20,11 +20,12 @@ const [foods,setFoods] = useState([]);
           // console.log(snapshot.docs.map((doc) => doc.data()))
           setFoods(snapshot.docs.map((doc)=>(
             {
-              data:doc.data()
-                // id: doc.id,
-                // date:doc.date,
-                // food: doc.food,
-                // address:doc.address
+              // data:doc.data()
+              name:doc.data().name,
+              date:doc.data().date,
+              address: doc.data().address,
+              food:doc.data().food,
+              id:doc.id
             }
            
           )))
@@ -34,13 +35,13 @@ const [foods,setFoods] = useState([]);
     },[])
 
 
-const ShowData = ({name,address, food, date,time}) =>{
+const ShowData = ({id,name,address, food, date,time}) =>{
   // console.log(date.toDateString());
   // var myDate = new Date(date*1000);
   // console.log(name);
 
   return(
-    <View>
+    <View key={id}>
       <View style={{alignItems:'center'}}>
         <Image style={styles.image}
         source={require('../assets/food.png')} />      
@@ -67,7 +68,7 @@ const ShowData = ({name,address, food, date,time}) =>{
 
           <TouchableOpacity
               style={styles.chatOpacity}
-              onPress={()=>{navigation.navigate('Chat')}}
+              onPress={()=>{chatCall(id)}}
             >
               <Text style={styles.chatBtn}> Chat Now </Text>
           </TouchableOpacity>
@@ -77,7 +78,10 @@ const ShowData = ({name,address, food, date,time}) =>{
 }
     
 
-
+const chatCall = (id)=>{
+  
+  navigation.navigate('Chat',{id})
+}
 
   return (
     <View style={styles.pageContent}>
@@ -91,7 +95,7 @@ const ShowData = ({name,address, food, date,time}) =>{
         <ScrollView>
 
         {/* console.log(new Date()) */}
-            {foods.map(({data}) =>{
+            {foods.map((data) =>{
 
               if(data.date.toDate().getTime() > new Date().getTime()){
                             
@@ -123,7 +127,7 @@ const ShowData = ({name,address, food, date,time}) =>{
               {/* console.log(cmpDate) */}
               return (
                   <View>
-                    <ShowData name={data.name} address={data.address} food={data.food} date={cmpDate} time={time}/>
+                    <ShowData key={data.id} id={data.id} name={data.name} address={data.address} food={data.food} date={cmpDate} time={time}/>
                   </View>
               )
 
@@ -160,7 +164,7 @@ const styles = StyleSheet.create({
   },
   foodName:{
     marginTop:0,
-    marginLeft:15,
+    marginLeft:25,
     fontWeight:"bold",
     color:'white',
     fontSize:25
@@ -207,7 +211,7 @@ const styles = StyleSheet.create({
   },
 
   topHeading:{
-    color: "#F8F8FF",
+    color: "#F8F8FF", 
     fontSize: 40,
     marginTop: '5%',
     marginBottom: '2%',

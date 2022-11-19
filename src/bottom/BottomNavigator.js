@@ -50,8 +50,7 @@ const BottomNavigator = () => {
                 ),
                 }}
             />
-            
-            
+             
             <Bottom.Screen 
                 name= 'Profile'
                 component={Profile}
@@ -61,7 +60,7 @@ const BottomNavigator = () => {
                     <MaterialCommunityIcons name="account" color={'green'} size={26} />
                 ),
                 }}
-            />
+            /> 
 
         </Bottom.Navigator>
 

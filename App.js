@@ -27,12 +27,12 @@ function MainStack() {
   return (
 
     <Stack.Navigator screenOptions={{
-      headerShown: false
+      // headerShown: false
     }}>  
       <Stack.Screen
           name='BottomNavigator'
           component={BottomNavigator}
-          options={{ HeaderShown: false , headerTitle: false }}
+          options={{ headerShown: false , headerTitle: false }}
       />
 
       
@@ -40,7 +40,7 @@ function MainStack() {
           name= 'Chat'
           component={Chat}
           options={{
-              headerShown:false,
+              // headerShown:false,
               // tabBarIcon:({color,size})=(
               //     <Image source={require('../../assets/home.png')}
               //     style={{width:24,height:24,tintColor:color}}/>
