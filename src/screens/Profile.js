@@ -33,6 +33,8 @@ useEffect(() => {
 const ShowData = ({name,address, food, date,time,id,email}) =>{
 
   return(
+    <>
+    {firebase.auth().currentUser.email === email ?  
     <View>
       <View style={{alignItems:'center'}}>
         <Image style={styles.image}
@@ -57,15 +59,15 @@ const ShowData = ({name,address, food, date,time,id,email}) =>{
           <Text style={styles.dateTime}>
             Time : {time}
           </Text>
-
-         {firebase.auth().currentUser.email === email ?  <TouchableOpacity
+          <TouchableOpacity
               style={styles.deleteOpacity}
               onPress={()=>{deleteFood(id)}}
             >
               <Text style={styles.deleteBtn}> Delete Food </Text>
-          </TouchableOpacity>:null}
+          </TouchableOpacity>
       </View>
-    </View>
+    </View>:null}
+    </>
   )
 }
     
@@ -110,7 +112,6 @@ const ShowData = ({name,address, food, date,time,id,email}) =>{
         <Text style={styles.name}>{auth.currentUser.displayName}</Text>
 
       </View>
-      {/* {firebase.auth().currentUser.email ===   ?  */}
       <TouchableOpacity
       style={styles.signOutOpc}
 
@@ -168,7 +169,7 @@ const ShowData = ({name,address, food, date,time,id,email}) =>{
 
       return (
           <View>
-            <ShowData name={data.name} address={data.address} food={data.food} date={cmpDate} time={time} id={data.id} email={data.email}/>
+          <ShowData name={data.name} address={data.address} food={data.food} date={cmpDate} time={time} id={data.id} email={data.email}/>
           </View>
       )
     }
